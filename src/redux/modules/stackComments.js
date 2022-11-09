@@ -30,9 +30,9 @@ export const deleteTodo = (payload) => {
 // };
 
 // GET ID action creator
-export const getCommentByID = (payload) => {
+export const getTodoByID = (payload) => {
   return {
-    type: GET_COMMENT_BY_ID,
+    type: GET_TODO_BY_ID,
     payload,
   };
 };
@@ -86,7 +86,7 @@ const stackComments = (state = initialState, action) => {
     //     }),
     //   };
 
-    case GET_COMMENT_BY_ID:
+    case GET_TODO_BY_ID:
       return {
         ...state,
         stackComment: state.stackComments.find((stackComment) => {

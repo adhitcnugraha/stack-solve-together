@@ -14,7 +14,7 @@ const Detail = () => {
   const stackCard = useSelector((state) => state.stackCards.stackCard);
 
   const comments = useDispatch();
-  // const stackComment = useSelector((state) => state.stackComments.stackComment);
+  const stackComment = useSelector((state) => state.stackComments.stackComment);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -22,7 +22,9 @@ const Detail = () => {
   useEffect(() => {
     comments(getCommentByID(id))
     dispatch(getTodoByID(id));
+    dispatch(getCommentByID(id));
   }, [dispatch, id]);
+ 
 
   return (
     <Layout>
