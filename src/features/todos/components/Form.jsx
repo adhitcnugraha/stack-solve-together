@@ -23,8 +23,9 @@ const Form = () => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    if (stackCard.title.trim() === "" || stackCard.body.trim() === "") return;
 
+    if (stackCard.title.trim() === "" || stackCard.body.trim() === "") 
+    return;
     dispatch(addTodo({ ...stackCard, id }));
     setTodo({
       id: 0,

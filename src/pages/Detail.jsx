@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getTodoByID } from "../redux/modules/stackCards.js";
+import { getTodoByID } from "../redux/modules/stackCards";
 import Header from "../components/ui/Header";
 import Layout from "../components/ui/Layout";
 import AddComment from "../features/todos/components/AddComment";
@@ -42,7 +42,9 @@ const Detail = () => {
         </StDialog>
       </StContainer>
       <div>
-        <AddComment />
+        <div>
+          <AddComment />
+        </div>
       </div>
     </Layout>
 
@@ -53,6 +55,7 @@ export default Detail;
 
 const StContainer = styled.div`
     padding: 0 24px;
+    margin-bottom: 24px;
 `;
 
 const StDialog = styled.div`
@@ -82,6 +85,8 @@ const StButton = styled.button`
   height: 40px;
   width: 120px;
   background-color: #fff;
+  padding: 24px;
   border-radius: 12px;
+  margin-bottom: 24px;
   cursor: pointer;
 `;

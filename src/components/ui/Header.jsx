@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <StContainer>
       <div>Team 2</div>
-      <div>StuckSolveTogether</div>
+      <div>StackSolveTogether</div>
     </StContainer>
   );
 };
