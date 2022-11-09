@@ -3,21 +3,25 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getTodoByID } from "../redux/modules/stackCards";
+import { getCommentByID } from "../redux/modules/stackComments";
 import Header from "../components/ui/Header";
 import Layout from "../components/ui/Layout";
 import AddComment from "../features/todos/components/AddComment";
-// import ListComment from "../features/todos/components/ListComment";
+import ListComment from "../features/todos/components/ListComment";
 
 const Detail = () => {
   const dispatch = useDispatch();
   const stackCard = useSelector((state) => state.stackCards.stackCard);
+  const stackComment = useSelector((state) => state.stackComments.stackComment);
 
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getTodoByID(id));
+    dispatch(getCommentByID(id));
   }, [dispatch, id]);
+ 
 
   return (
     <Layout>
@@ -44,6 +48,7 @@ const Detail = () => {
       <div>
         <div>
           <AddComment />
+          <ListComment />
         </div>
       </div>
     </Layout>

@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTodo, toggleStatusTodo } from "../../../redux/modules/stackComments";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const ListComments = () => {
   const dispatch = useDispatch();
   const stackComments = useSelector((state) => state.stackComments.stackComments);
-
+  // console.log(stackComments);
   const onDeleteTodo = (id) => {
     dispatch(deleteTodo(id));
   };
@@ -18,10 +18,9 @@ const ListComments = () => {
 
   return (
     <StListContainer>
-      <h2><font color="red">Unsolved</font></h2>
       <StListWrapper>
         {stackComments.map((stackComment) => {
-          if (!stackComment.isDone) {
+          if (stackComment) {
             return (
               <StTodoContainer key={stackComment.id} Color="red">           
                 <div>
@@ -39,39 +38,8 @@ const ListComments = () => {
                     Color="green"
                     onClick={() => onToggleStatusTodo(stackComment.id)}
                   >
-                    {stackComment.isDone ? "Cancel!" : "E"}
+                    {stackComment ? "" : "E"}
                   </StButton>
-                   <StLink to={`/${stackComment.id}`} key={stackComment.id}>
-                  <div>Detail</div>
-                </StLink>
-                </StDialogFooter>
-              </StTodoContainer>
-            );
-          } else {
-            return null;
-          }
-        })}
-      </StListWrapper>
-      <h2 className="list-title"><font color="green">Solved</font></h2>
-      <StListWrapper>
-        {stackComments.map((stackComment) => {
-          if (stackComment.isDone) {
-            return (
-              <StTodoContainer key={stackComment.id} Color="green">
-                <div>
-                  <h2 className="todo-title">{stackComment.title}</h2>
-                  <div>{stackComment.body}</div>
-                </div>
-                <StDialogFooter>
-                  <StButton
-                    Color="red"
-                    onClick={() => onDeleteTodo(stackComment.id)}
-                  >
-                    D
-                  </StButton>
-                   <StLink to={`/${stackComment.id}`} key={stackComment.id}>
-                  <div>Detail</div>
-                </StLink>
                 </StDialogFooter>
               </StTodoContainer>
             );
@@ -105,9 +73,9 @@ const StTodoContainer = styled.div`
   
 `;
 
-const StLink = styled(Link)`
-  text-decoration: none;
-`;
+// const StLink = styled(Link)`
+//   text-decoration: none;
+// `;
 
 const StDialogFooter = styled.footer`
   display: flex;
