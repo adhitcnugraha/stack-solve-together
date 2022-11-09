@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTodo, toggleStatusTodo } from "../../../redux/modules/stackComments";
+import { deleteTodo } from "../../../redux/modules/stackComments";
 import { Link } from "react-router-dom";
 
 const ListComments = () => {
@@ -12,52 +12,17 @@ const ListComments = () => {
     dispatch(deleteTodo(id));
   };
 
-  const onToggleStatusTodo = (id) => {
-    dispatch(toggleStatusTodo(id));
-  };
+  // const onToggleStatusTodo = (id) => {
+  //   dispatch(toggleStatusTodo(id));
+  // };
 
   return (
     <StListContainer>
-      <h2><font color="red">Unsolved</font></h2>
       <StListWrapper>
         {stackComments.map((stackComment) => {
-          if (!stackComment.isDone) {
+          if (stackComment) {
             return (
-              <StTodoContainer key={stackComment.id} Color="red">           
-                <div>
-                  <h2 className="todo-title">{stackComment.title}</h2>
-                  <div>{stackComment.body}</div>
-                </div>
-                <StDialogFooter>
-                  <StButton
-                    Color="red"
-                    onClick={() => onDeleteTodo(stackComment.id)}
-                  >
-                    D
-                  </StButton>
-                  <StButton
-                    Color="green"
-                    onClick={() => onToggleStatusTodo(stackComment.id)}
-                  >
-                    {stackComment.isDone ? "Cancel!" : "E"}
-                  </StButton>
-                   <StLink to={`/${stackComment.id}`} key={stackComment.id}>
-                  <div>Detail</div>
-                </StLink>
-                </StDialogFooter>
-              </StTodoContainer>
-            );
-          } else {
-            return null;
-          }
-        })}
-      </StListWrapper>
-      <h2 className="list-title"><font color="green">Solved</font></h2>
-      <StListWrapper>
-        {stackComments.map((stackComment) => {
-          if (stackComment.isDone) {
-            return (
-              <StTodoContainer key={stackComment.id} Color="green">
+              <StTodoContainer key={stackComment.id} Color="blue">           
                 <div>
                   <h2 className="todo-title">{stackComment.title}</h2>
                   <div>{stackComment.body}</div>
@@ -70,7 +35,6 @@ const ListComments = () => {
                     D
                   </StButton>
                    <StLink to={`/${stackComment.id}`} key={stackComment.id}>
-                  <div>Detail</div>
                 </StLink>
                 </StDialogFooter>
               </StTodoContainer>
@@ -93,6 +57,7 @@ const StListContainer = styled.div`
 const StListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  padding: 12px;
   gap: 12px;
 `;
 
