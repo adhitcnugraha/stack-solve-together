@@ -37,22 +37,24 @@ const Form = () => {
   return (
     <StAddForm onSubmit={onSubmitHandler}>
       <StInputGroup>
-        <StFormLabel>Title</StFormLabel>
+        <StFormLabel></StFormLabel>
         <StAddInput
           type="text"
           name="title"
           value={todo.title}
+          placeholder="add title"
           onChange={onChangeHandler}
         />
-        <StFormLabel>An Item</StFormLabel>
+        <StFormLabel></StFormLabel>
         <StAddInput
           type="text"
           name="body"
+          placeholder="add content"
           value={todo.body}
           onChange={onChangeHandler}
         />
       </StInputGroup>
-      <StAddButton>Save</StAddButton>
+      <StAddButton>Add</StAddButton>
     </StAddForm>
   );
 };
@@ -83,7 +85,7 @@ const StAddForm = styled.form`
 
 const StAddInput = styled.input`
   height: 40px;
-  width: 240px;
+  width: 450px;
   border: none;
   border-radius: 12px;
   padding: 0 12px;

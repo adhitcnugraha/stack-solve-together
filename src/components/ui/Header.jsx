@@ -4,8 +4,8 @@ import styled from "styled-components";
 const Header = () => {
   return (
     <StContainer>
-      <div>My Todo List - React Redux</div>
-      <div>React Week 3</div>
+      <div>Team 2</div>
+      <div>StuckSolveTogether</div>
     </StContainer>
   );
 };

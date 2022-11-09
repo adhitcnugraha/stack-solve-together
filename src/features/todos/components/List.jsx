@@ -18,32 +18,32 @@ const List = () => {
 
   return (
     <StListContainer>
-      <h2>On-Progress.. 🔥</h2>
+      <h2><font color="red">Unsolved</font></h2>
       <StListWrapper>
         {todos.map((todo) => {
           if (!todo.isDone) {
             return (
-              <StTodoContainer key={todo.id}>
-                <StLink to={`/${todo.id}`} key={todo.id}>
-                  <div>View Detail..</div>
-                </StLink>
+              <StTodoContainer key={todo.id} Color="red">           
                 <div>
                   <h2 className="todo-title">{todo.title}</h2>
                   <div>{todo.body}</div>
                 </div>
                 <StDialogFooter>
                   <StButton
-                    borderColor="red"
+                    Color="red"
                     onClick={() => onDeleteTodo(todo.id)}
                   >
-                    Delete
+                    D
                   </StButton>
                   <StButton
-                    borderColor="green"
+                    Color="green"
                     onClick={() => onToggleStatusTodo(todo.id)}
                   >
-                    {todo.isDone ? "Cancel!" : "Done!"}
+                    {todo.isDone ? "Cancel!" : "E"}
                   </StButton>
+                   <StLink to={`/${todo.id}`} key={todo.id}>
+                  <div>Detail</div>
+                </StLink>
                 </StDialogFooter>
               </StTodoContainer>
             );
@@ -52,32 +52,26 @@ const List = () => {
           }
         })}
       </StListWrapper>
-      <h2 className="list-title">Done..! 🎉</h2>
+      <h2 className="list-title"><font color="green">Solved</font></h2>
       <StListWrapper>
         {todos.map((todo) => {
           if (todo.isDone) {
             return (
-              <StTodoContainer key={todo.id}>
-                <StLink to={`/${todo.id}`} key={todo.id}>
-                  <div>View Detail ...</div>
-                </StLink>
+              <StTodoContainer key={todo.id} Color="green">
                 <div>
                   <h2 className="todo-title">{todo.title}</h2>
                   <div>{todo.body}</div>
                 </div>
                 <StDialogFooter>
                   <StButton
-                    borderColor="red"
+                    Color="red"
                     onClick={() => onDeleteTodo(todo.id)}
                   >
-                    Delete
+                    D
                   </StButton>
-                  <StButton
-                    borderColor="green"
-                    onClick={() => onToggleStatusTodo(todo.id)}
-                  >
-                    {todo.isDone ? "Cancel!" : "Done!"}
-                  </StButton>
+                   <StLink to={`/${todo.id}`} key={todo.id}>
+                  <div>Detail</div>
+                </StLink>
                 </StDialogFooter>
               </StTodoContainer>
             );
@@ -103,11 +97,12 @@ const StListWrapper = styled.div`
 `;
 
 const StTodoContainer = styled.div`
-  width: 270px;
-  border: 4px solid teal;
-  min-height: 150px;
+  width: 100%;
+   border: 4px solid ${({ Color }) => Color};
+  min-height: 100px;
   border-radius: 12px;
   padding: 12px 24px 24px 24px;
+  
 `;
 
 const StLink = styled(Link)`
@@ -122,9 +117,11 @@ const StDialogFooter = styled.footer`
 `;
 
 const StButton = styled.button`
-  border: 1px solid ${({ borderColor }) => borderColor};
-  height: 40px;
-  width: 120px;
+  border: none;
+  font-size: 20px;
+  color: ${({ Color }) => Color};
+  height: 10px;
+  width:  50px;
   background-color: #fff;
   border-radius: 12px;
   cursor: pointer;
