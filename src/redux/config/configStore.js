@@ -1,9 +1,9 @@
 import { createStore } from "redux";
 import { combineReducers } from "redux";
-import todos from "../modules/todos.js";
+import stackCards from "../modules/stackCards";
 
 const rootReducer = combineReducers({
-    todos,
+    stackCards,
 });
 const store = createStore(rootReducer);
 

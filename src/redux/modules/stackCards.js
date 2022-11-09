@@ -39,7 +39,7 @@ export const getTodoByID = (payload) => {
 
 // initial state
 const initialState = {
-    todos: [
+    stackCards: [
         {
             id: "1",
             title: "Redux",
@@ -47,7 +47,7 @@ const initialState = {
             isDone: true,
         },
     ],
-    todo: {
+    stackCard: {
         id: "0",
         title: "",
         body: "",
@@ -55,31 +55,31 @@ const initialState = {
     },
 };
 
-const todos = (state = initialState, action) => {
+const stackCards = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
             return {
                 ...state,
-                todos: [...state.todos, action.payload],
+                stackCards: [...state.stackCards, action.payload],
             };
 
         case DELETE_TODO:
             return {
                 ...state,
-                todos: state.todos.filter((todo) => todo.id !== action.payload),
+                stackCards: state.stackCards.filter((stackCard) => stackCard.id !== action.payload),
             };
 
         case TOGGLE_STATUS_TODO:
             return {
                 ...state,
-                todos: state.todos.map((todo) => {
-                    if (todo.id === action.payload) {
+                stackCards: state.stackCards.map((stackCard) => {
+                    if (stackCard.id === action.payload) {
                         return {
-                            ...todo,
-                            isDone: !todo.isDone,
+                            ...stackCard,
+                            isDone: !stackCard.isDone,
                         };
                     } else {
-                        return todo;
+                        return stackCard;
                     }
                 }),
             };
@@ -87,8 +87,8 @@ const todos = (state = initialState, action) => {
         case GET_TODO_BY_ID:
             return {
                 ...state,
-                todo: state.todos.find((todo) => {
-                    return todo.id === action.payload;
+                stackCard: state.stackCards.find((stackCard) => {
+                    return stackCard.id === action.payload;
                 }),
             };
         default:
@@ -96,4 +96,4 @@ const todos = (state = initialState, action) => {
     }
 };
 
-export default todos;
+export default stackCards;

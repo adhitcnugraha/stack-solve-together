@@ -2,11 +2,15 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getTodoByID } from "../redux/modules/todos.js";
+import { getTodoByID } from "../redux/modules/stackCards.js";
+import Header from "../components/ui/Header";
+import Layout from "../components/ui/Layout";
+import AddComment from "../features/todos/components/AddComment";
+// import ListComment from "../features/todos/components/ListComment";
 
 const Detail = () => {
   const dispatch = useDispatch();
-  const todo = useSelector((state) => state.todos.todo);
+  const stackCard = useSelector((state) => state.stackCards.stackCard);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -16,54 +20,53 @@ const Detail = () => {
   }, [dispatch, id]);
 
   return (
-    <StContainer>
-      <StDialog>
-        <div>
+    <Layout>
+      <Header />
+      <div>
+        <StButton
+          borderColor="#ddd"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Back to List
+        </StButton>
+      </div>
+      <StContainer>
+        <StDialog>
           <StDialogHeader>
-            <div>ID :{todo.id}</div>
-            <StButton
-              borderColor="#ddd"
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              Back to List
-            </StButton>
+            <div>ID :{stackCard.id}</div>
+            <StTitle>{stackCard.title}</StTitle>
+            <StBody>{stackCard.body}</StBody>
           </StDialogHeader>
-          <StTitle>{todo.title}</StTitle>
-          <StBody>{todo.body}</StBody>
-        </div>
-      </StDialog>
-    </StContainer>
+        </StDialog>
+      </StContainer>
+      <div>
+        <AddComment />
+      </div>
+    </Layout>
+
   );
 };
 
 export default Detail;
 
 const StContainer = styled.div`
-  border: 2px solid #eee;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    padding: 0 24px;
 `;
 
 const StDialog = styled.div`
-  width: 600px;
-  height: 400px;
-  border: 1px solid #eee;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
 `;
 
 const StDialogHeader = styled.div`
-  display: flex;
-  height: 80px;
-  justify-content: space-between;
-  padding: 0 24px;
-  align-items: center;
+  width: 100%;
+  border: 4px solid ${({ Color }) => Color};
+  min-height: 100px;
+  border-radius: 12px;
+  padding: 12px 24px 24px 24px;
 `;
 
 const StTitle = styled.h1`

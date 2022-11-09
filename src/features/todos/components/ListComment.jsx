@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTodo, toggleStatusTodo } from "../../../redux/modules/stackCards";
+import { deleteTodo, toggleStatusTodo } from "../../../redux/modules/stackComments";
 import { Link } from "react-router-dom";
 
-const List = () => {
+const ListComments = () => {
   const dispatch = useDispatch();
-  const stackCards = useSelector((state) => state.stackCards.stackCards);
+  const stackComments = useSelector((state) => state.stackComments.stackComments);
 
   const onDeleteTodo = (id) => {
     dispatch(deleteTodo(id));
@@ -20,28 +20,28 @@ const List = () => {
     <StListContainer>
       <h2><font color="red">Unsolved</font></h2>
       <StListWrapper>
-        {stackCards.map((stackCard) => {
-          if (!stackCard.isDone) {
+        {stackComments.map((stackComment) => {
+          if (!stackComment.isDone) {
             return (
-              <StTodoContainer key={stackCard.id} Color="red">           
+              <StTodoContainer key={stackComment.id} Color="red">           
                 <div>
-                  <h2 className="todo-title">{stackCard.title}</h2>
-                  <div>{stackCard.body}</div>
+                  <h2 className="todo-title">{stackComment.title}</h2>
+                  <div>{stackComment.body}</div>
                 </div>
                 <StDialogFooter>
                   <StButton
                     Color="red"
-                    onClick={() => onDeleteTodo(stackCard.id)}
+                    onClick={() => onDeleteTodo(stackComment.id)}
                   >
                     D
                   </StButton>
                   <StButton
                     Color="green"
-                    onClick={() => onToggleStatusTodo(stackCard.id)}
+                    onClick={() => onToggleStatusTodo(stackComment.id)}
                   >
-                    {stackCard.isDone ? "Cancel!" : "E"}
+                    {stackComment.isDone ? "Cancel!" : "E"}
                   </StButton>
-                   <StLink to={`/${stackCard.id}`} key={stackCard.id}>
+                   <StLink to={`/${stackComment.id}`} key={stackComment.id}>
                   <div>Detail</div>
                 </StLink>
                 </StDialogFooter>
@@ -54,22 +54,22 @@ const List = () => {
       </StListWrapper>
       <h2 className="list-title"><font color="green">Solved</font></h2>
       <StListWrapper>
-        {stackCards.map((stackCard) => {
-          if (stackCard.isDone) {
+        {stackComments.map((stackComment) => {
+          if (stackComment.isDone) {
             return (
-              <StTodoContainer key={stackCard.id} Color="green">
+              <StTodoContainer key={stackComment.id} Color="green">
                 <div>
-                  <h2 className="todo-title">{stackCard.title}</h2>
-                  <div>{stackCard.body}</div>
+                  <h2 className="todo-title">{stackComment.title}</h2>
+                  <div>{stackComment.body}</div>
                 </div>
                 <StDialogFooter>
                   <StButton
                     Color="red"
-                    onClick={() => onDeleteTodo(stackCard.id)}
+                    onClick={() => onDeleteTodo(stackComment.id)}
                   >
                     D
                   </StButton>
-                   <StLink to={`/${stackCard.id}`} key={stackCard.id}>
+                   <StLink to={`/${stackComment.id}`} key={stackComment.id}>
                   <div>Detail</div>
                 </StLink>
                 </StDialogFooter>
@@ -84,7 +84,7 @@ const List = () => {
   );
 };
 
-export default List;
+export default ListComments;
 
 const StListContainer = styled.div`
   padding: 0 24px;

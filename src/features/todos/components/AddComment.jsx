@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import nextId from "react-id-generator";
-import { addTodo } from "../../../redux/modules/stackCards";
+import { addTodo } from "../../../redux/modules/stackComments";
 
-const Form = () => {
+const AddComment = () => {
   const id = nextId();
 
   const dispatch = useDispatch();
-  const [stackCard, setTodo] = useState({
+  const [stackComment, setTodo] = useState({
     id: 0,
     title: "",
     body: "",
@@ -18,14 +18,14 @@ const Form = () => {
   // const todos = useSelector((state) => state.todos.todos);
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
-    setTodo({ ...stackCard, [name]: value });
+    setTodo({ ...stackComment, [name]: value });
   };
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    if (stackCard.title.trim() === "" || stackCard.body.trim() === "") return;
+    if (stackComment.title.trim() === "" || stackComment.body.trim() === "") return;
 
-    dispatch(addTodo({ ...stackCard, id }));
+    dispatch(addTodo({ ...stackComment, id }));
     setTodo({
       id: 0,
       title: "",
@@ -35,31 +35,31 @@ const Form = () => {
   };
 
   return (
-    <StAddForm onSubmit={onSubmitHandler}>
+    <StAddComment onSubmit={onSubmitHandler}>
       <StInputGroup>
         <StFormLabel></StFormLabel>
         <StAddInput
           type="text"
           name="title"
-          value={stackCard.title}
-          placeholder="add title"
+          value={stackComment.title}
+          placeholder="add name"
           onChange={onChangeHandler}
         />
         <StFormLabel></StFormLabel>
         <StAddInput
           type="text"
           name="body"
-          placeholder="add content"
-          value={stackCard.body}
+          placeholder="add comment"
+          value={stackComment.body}
           onChange={onChangeHandler}
         />
       </StInputGroup>
       <StAddButton>Add</StAddButton>
-    </StAddForm>
+    </StAddComment>
   );
 };
 
-export default Form;
+export default AddComment;
 
 const StInputGroup = styled.div`
   display: flex;
@@ -72,7 +72,7 @@ const StFormLabel = styled.label`
   font-weight: 700;
 `;
 
-const StAddForm = styled.form`
+const StAddComment = styled.form`
   background-color: #eee;
   border-radius: 12px;
   margin: 0 auto;
