@@ -22,7 +22,6 @@ const Detail = () => {
   useEffect(() => {
     comments(getCommentByID(id))
     dispatch(getTodoByID(id));
-    dispatch(getCommentByID(id));
   }, [dispatch, id]);
  
 
@@ -51,7 +50,7 @@ const Detail = () => {
       <div>
         <div>
           <AddComment />
-          <ListComment />
+        <ListComment />
         </div>
       </div>
     </Layout>
@@ -92,6 +91,7 @@ const StButton = styled.button`
   border: 1px solid ${({ borderColor }) => borderColor};
   height: 40px;
   width: 120px;
+  text-align: center;
   background-color: #fff;
   padding: 24px;
   border-radius: 12px;

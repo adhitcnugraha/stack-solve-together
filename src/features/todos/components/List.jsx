@@ -124,5 +124,6 @@ const StButton = styled.button`
   width:  50px;
   background-color: #fff;
   border-radius: 12px;
+  margin-right: 15px;
   cursor: pointer;
 `;

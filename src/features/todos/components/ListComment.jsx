@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTodo } from "../../../redux/modules/stackComments";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ListComments = () => {
   const dispatch = useDispatch();
@@ -18,12 +18,11 @@ const ListComments = () => {
 
   return (
     <StListContainer>
-      <h2><font color="red">Unsolved</font></h2>
       <StListWrapper>
         {stackComments.map((stackComment) => {
           if (!stackComment.isDone) {
             return (
-              <StTodoContainer key={stackComment.id} Color="red">           
+              <StTodoContainer key={stackComment.id} Color="blue">           
                 <div>
                   <h2 className="todo-title">{stackComment.title}</h2>
                   <div>{stackComment.body}</div>
@@ -35,15 +34,15 @@ const ListComments = () => {
                   >
                     D
                   </StButton>
-                  <StButton
+                  {/* <StButton
                     Color="green"
                     onClick={() => onToggleStatusTodo(stackComment.id)}
                   >
                     {stackComment.isDone ? "Cancel!" : "E"}
-                  </StButton>
-                   <StLink to={`/${stackComment.id}`} key={stackComment.id}>
+                  </StButton> */}
+                   {/* <StLink to={`/${stackComment.id}`} key={stackComment.id}>
                   <div>Detail</div>
-                </StLink>
+                </StLink> */}
                 </StDialogFooter>
               </StTodoContainer>
             );
@@ -52,7 +51,6 @@ const ListComments = () => {
           }
         })}
       </StListWrapper>
-      <h2 className="list-title"><font color="green">Solved</font></h2>
       <StListWrapper>
         {stackComments.map((stackComment) => {
           if (stackComment.isDone) {
@@ -69,9 +67,9 @@ const ListComments = () => {
                   >
                     D
                   </StButton>
-                   <StLink to={`/${stackComment.id}`} key={stackComment.id}>
+                   {/* <StLink to={`/${stackComment.id}`} key={stackComment.id}>
                   <div>Detail</div>
-                </StLink>
+                </StLink> */}
                 </StDialogFooter>
               </StTodoContainer>
             );
