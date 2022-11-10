@@ -21,14 +21,6 @@ export const deleteTodo = (payload) => {
   };
 };
 
-// Todo IS DONE action creator
-// export const toggleStatusTodo = (payload) => {
-//   return {
-//     type: TOGGLE_STATUS_TODO,
-//     payload,
-//   };
-// };
-
 // GET ID action creator
 export const getCommentByID = (payload) => {
   return {
@@ -44,14 +36,12 @@ const initialState = {
       id: "1",
       title: "This is Title",
       body: "Stressed out",
-      isDone: true,
     },
   ],
   stackComment: {
     id: "0",
     title: "",
     body: "",
-    isDone: false,
   },
 };
 

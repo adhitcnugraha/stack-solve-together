@@ -12,7 +12,6 @@ const AddComment = () => {
     id: 0,
     title: "",
     body: "",
-    isDone: false,
   });
 
   // const todos = useSelector((state) => state.todos.todos);
@@ -30,7 +29,6 @@ const AddComment = () => {
       id: 0,
       title: "",
       body: "",
-      isDone: false,
     });
   };
 

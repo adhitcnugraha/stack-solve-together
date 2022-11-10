@@ -23,7 +23,7 @@ const List = () => {
         {stackCards.map((stackCard) => {
           if (!stackCard.isDone) {
             return (
-              <StTodoContainer key={stackCard.id} Color="red">           
+               <StTodoContainer key={stackCard.id} Color="red">           
                 <div>
                   <h2 className="todo-title">{stackCard.title}</h2>
                   <div>{stackCard.body}</div>
@@ -98,7 +98,7 @@ const StListWrapper = styled.div`
 
 const StTodoContainer = styled.div`
   width: 100%;
-   border: 4px solid ${({ Color }) => Color};
+  border: 4px solid ${({ Color }) => Color};
   min-height: 100px;
   border-radius: 12px;
   padding: 12px 24px 24px 24px;

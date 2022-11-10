@@ -14,15 +14,14 @@ const Detail = () => {
   const stackCard = useSelector((state) => state.stackCards.stackCard);
 
   const comments = useDispatch();
-  const stackComment = useSelector((state) => state.stackComments.stackComment);
 
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    comments(getCommentByID(id))
+    comments(getCommentByID(id));
     dispatch(getTodoByID(id));
-  }, [dispatch, id]);
+  }, [comments, dispatch, id]);
  
 
   return (
@@ -50,7 +49,7 @@ const Detail = () => {
       <div>
         <div>
           <AddComment />
-        <ListComment />
+          <ListComment />
         </div>
       </div>
     </Layout>
